@@ -1,0 +1,23 @@
+doctype html
+head
+    meta(charset='UTF-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    meta(http-equiv='X-UA-Compatible' content='ie=edge')
+    style
+        include css/index.css      
+    title Wedio Engine
+body
+    ul.navUl
+        li.navLi.title
+            a(href='#') WedioLOGO
+    .box
+        .inbox
+            h1 Wedio Engine
+            h4 겁나 쩌는 엔진 입니다;; ㄷㄷ 빨리 쓰셈..
+            #gSignInWrapper
+                a(href='/auth/google')
+                    #customBtn.customGPlusSignIn
+                        img.icon(src='/img/g-logo.png' alt='구글 아이콘')
+                        span.buttonText 구글 로그인
+
+    footer &copy; 2019 9시 17분. All Rights Reserved.
