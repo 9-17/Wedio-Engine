@@ -1,0 +1,22 @@
+doctype html
+html
+    head
+        include lib/headSetting.pug
+
+        style
+            include css/list.css
+        title Wedio Engine - 노래 목록
+    body
+        include lib/nav.pug
+        
+        input.btn.upload(type="button" value="업로드")
+
+        .container
+            h1 내 노래
+            .list
+                - let i = 0
+                while i < 50
+                    img(src="/img/test.jpg", alt="테스트 사진")
+                    - i++
+        
+        include lib/footer.pug

@@ -30,6 +30,10 @@ body, html{
     float: left;
 }
 
+.username, .logout{
+  float: right;
+}
+
 .box{
     width: 800px;
     height: 450px;
