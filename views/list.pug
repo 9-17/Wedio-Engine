@@ -3,13 +3,13 @@ html
     head
         include lib/headSetting.pug
 
-        style
-            include css/list.css
+        link(rel="stylesheet", href="/css/list.css")
+        
         title Wedio Engine - 노래 목록
     body
         include lib/nav.pug
         
-        input.btn.upload(type="button" value="업로드")
+        button.btn.upload(onclick="location.href='/upload'") 업로드
 
         .container
             h1 내 노래

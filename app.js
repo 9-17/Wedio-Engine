@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express()
 
-const PORT = 9562
+const PORT = 80
 
 // 템플릿(퍼그) 세팅
 app.set('views', 'views')
