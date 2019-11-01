@@ -1,31 +1,41 @@
 const express = require('express')
 const app = express()
+const bodyParser = require("body-parser")
+const rootRouter = require("./engine/models/router")
 
+// SERVER PORT
 const PORT = 80
 
-// 템플릿(퍼그) 세팅
 app.set('views', 'views')
 app.set('view engine', 'pug')
 
-// 정적파일 로드를 위해 
 app.use(express.static('public'))
+app.use(bodyParser.json())                          // JSON Parseing
+app.use(bodyParser.urlencoded({extended: true}))    // URL Parseing
 
-app.get('/', (req, res) => {
-    res.render('index')
-})
-
-app.get('/list', (req, res) => {
-    res.render('list')
-})
-
-app.get('/upload', (req, res) => {
-    res.render('upload')
-})
-
-app.get('/playing', (req, res) => {
-    res.render('playing')
-})
+// Setup Router
+app.use(rootRouter)
 
 app.listen(PORT, () => {
-    console.log(`Running on ${PORT}!!`)
+    console.log(`WEDIO-SERVER is running on ${PORT}`)
 })
+
+// app.get('/', (req, res) => {
+//     res.render('index')
+// })
+
+// app.get('/list', (req, res) => {
+//     res.render('list')
+// })
+
+// app.get('/upload', (req, res) => {
+//     res.render('upload')
+// })
+
+// app.get('/playing', (req, res) => {
+//     res.render('playing')
+// })
+
+// app.listen(PORT, () => {
+//     console.log(`Running on ${PORT}!!`)
+// })
