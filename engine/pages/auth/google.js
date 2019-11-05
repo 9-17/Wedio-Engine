@@ -1,6 +1,8 @@
 const express = require('express')
 const app = express()
 const router = express.Router()
+const database = require("../../models/database")
+const uuidv4 = require('uuid/v4')
 
 const passport = require("passport")
 const GoogleStrategy = require("passport-google-oauth20").Strategy
@@ -17,12 +19,30 @@ passport.use(new GoogleStrategy({
         photo: profile.photos[0].value
     }
 
-    return done(null, googleLoginData)
+    database.conn.query(database.queries.AUTH_OBTAIN_SESS_TOKEN, [profile.id, googleLoginData.provider], (err, rows) => {
+        if(err) {
+            return done(null, false, { message: "MySQL connection error." })
+        } else {
+            if(rows.length == 0) {
+                // 가입 정보가 없다면, 가입 한다.
+                database.conn.query(database.queries.AUTH_SIGNUP, 
+                    [profile.id, uuidv4(), googleLoginData.provider, googleLoginData.name, googleLoginData.photo, null], (err, rows) => {
+                    if(err) {
+                        return done(null, false, { message: "MySQL connection error." })
+                    } else {
+                        return done(null, googleLoginData)
+                    }
+                })
+            } else {
+                return done(null, googleLoginData)
+            }
+        }
+    })
 }))
 
 router.get("/", passport.authenticate("google", { scope: ['profile'] }))
 
-router.get("/redirect", passport.authenticate("google", {failureRedirect: "../singin"}), (req, res) => {
+router.get("/redirect", passport.authenticate("google", {failureRedirect: "../signin"}), (req, res) => {
     // google login successed.
     res.send("GOOGLE LOGIN OK.")
 })
