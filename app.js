@@ -4,7 +4,7 @@ const bodyParser = require("body-parser")
 const rootRouter = require("./engine/models/router")
 
 // SERVER PORT
-const PORT = 9562
+const PORT = 80
 
 app.set('views', 'views')
 app.set('view engine', 'pug')
