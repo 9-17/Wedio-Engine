@@ -1,14 +1,16 @@
 @import url('https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap&subset=korean');
-*{
+
+* {
     font-family: 'Nanum Gothic', sans-serif;
 }
 
-body, html{
+body,
+html {
     margin: 0;
     padding: 0;
 }
 
-.navUl{
+.navUl {
     width: 100%;
     list-style-type: none;
     margin: 0;
@@ -17,7 +19,7 @@ body, html{
     background-color: #121212;
 }
 
-.navLi a{
+.navLi a {
     display: block;
     color: white;
     text-align: center;
@@ -26,15 +28,16 @@ body, html{
     text-decoration: none;
 }
 
-.title{
+.title {
     float: left;
 }
 
-.username, .logout{
+.username,
+.logout {
     float: right;
 }
 
-.upload{
+.upload {
     position: absolute;
     top: 60px;
     right: 5vw;
@@ -46,24 +49,24 @@ body, html{
     cursor: pointer;
 }
 
-.container>h1{
+.container>h1 {
     margin-left: 10vw;
 }
 
-.list{
+.list {
     width: 80vw;
     height: 60vh;
     margin: 0 auto;
     overflow: auto;
 }
 
-.list>img{
+.list>img {
     width: 100px;
     height: 100px;
     margin: 20px;
 }
 
-footer{
+footer {
     position: fixed;
     width: 100%;
     bottom: 0;

@@ -13,10 +13,18 @@ html
             .inbox
                 h1 Wedio Engine
                 h4 겁나 쩌는 엔진 입니다;; ㄷㄷ 빨리 쓰셈..
-                #gSignInWrapper
-                    a(href='/auth/google')
-                        #customBtn.customGPlusSignIn
-                            img.icon(src='/img/g-logo.png' alt='구글 아이콘')
-                            span.buttonText 구글 로그인
+                -if(!username)
+                    .loginBtn#googleLogin
+                        a(href='/auth/google')
+                            img.loginLogo#googleLogo(src="/img/g-logo.png", alt="구글 아이콘", align="top")
+                            span.loginText#googleText Google로 로그인
+                    br
+                    .loginBtn#naverLogin
+                        a(href='/auth/naver')
+                            img.loginLogo#naverLogo(src="/img/n-logo.png", alt="페이스북 아이콘", align="top")
+                            span.loginText#naverText Naver로 로그인
+                - else
+                    button.btn.goCloud(onclick="location.href='/cloud'") 시작하기
+                    
 
         include lib/footer.pug
