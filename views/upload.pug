@@ -1,0 +1,20 @@
+doctype html
+html
+    head
+        include lib/headSetting.pug
+        
+        link(rel="stylesheet", href="/css/upload.css")
+        script(src="/js/upload.js")
+        title Wedio Engine - 업로드
+    body
+        include lib/nav.pug
+        
+        .container
+            .box
+                h1 업로드
+                h3 * mp3 또는 wav 파일만 업로드 가능합니다. *
+                form(action="#", method="post", enctype="multipart/form-data")
+                    input(type="file", name="file", accept="audio/mp3, audio/wav", onchange="fileCheck(this)")
+                    input(type="submit", value="업로드")
+        
+        include lib/footer.pug

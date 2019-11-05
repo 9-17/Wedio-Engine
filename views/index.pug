@@ -1,0 +1,22 @@
+doctype html
+html
+    head
+        include lib/headSetting.pug
+
+        link(rel="stylesheet", href="/css/index.css")
+            
+        title Wedio Engine
+    body
+        include lib/nav.pug
+        
+        .box
+            .inbox
+                h1 Wedio Engine
+                h4 겁나 쩌는 엔진 입니다;; ㄷㄷ 빨리 쓰셈..
+                #gSignInWrapper
+                    a(href='/auth/google')
+                        #customBtn.customGPlusSignIn
+                            img.icon(src='/img/g-logo.png' alt='구글 아이콘')
+                            span.buttonText 구글 로그인
+
+        include lib/footer.pug
