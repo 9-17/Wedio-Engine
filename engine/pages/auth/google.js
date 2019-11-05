@@ -10,12 +10,14 @@ passport.use(new GoogleStrategy({
     clientSecret: "fdK9R_fGLCp23h6JW90s5YFJ",
     callbackURL: "http://wedio.saintdev.kr/auth/google/redirect"
 }, (accessToken, refreshToken, profile, done) => {
-    console.log("=-=-=-=-=-=-=-= GOOGLE LOGIN!!!! =-=-=-=-=-=-=-=")
-    console.log(profile)
+    let googleLoginData = {
+        provider: "google",
+        uuid: profile.id,
+        name: profile.displayName,
+        photo: profile.photos[0].value
+    }
 
-    // TODO Server working...
-
-    return done(null, profile)
+    return done(null, googleLoginData)
 }))
 
 router.get("/", passport.authenticate("google", { scope: ['profile'] }))

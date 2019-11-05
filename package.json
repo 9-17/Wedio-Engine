@@ -5,9 +5,16 @@
   "main": "app.js",
   "dependencies": {
     "body-parser": "^1.19.0",
+    "connect-flash": "^0.1.1",
     "express": "^4.17.1",
+    "express-session": "^1.17.0",
+    "install": "^0.13.0",
     "mysql": "^2.17.1",
     "nodemon": "^1.19.4",
+    "npm": "^6.12.1",
+    "passport": "^0.4.0",
+    "passport-google-oauth20": "^2.0.0",
+    "passport-naver": "^1.0.6",
     "path": "^0.12.7",
     "pug": "^2.0.4"
   },
