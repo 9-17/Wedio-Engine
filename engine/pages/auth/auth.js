@@ -3,6 +3,7 @@ const app = express()
 const router = express.Router()
 const passport = require("passport")
 const database = require("../../models/database")
+const auth = require("../../models/authentication")             // Login Manager
 
 // Social login routers.
 const googleLoginRouter = require("./google")
@@ -36,7 +37,8 @@ passport.deserializeUser((id, done) => {
                     provider: rows[0].auth_provider,
                     uuid: rows[0].auth_uuid,
                     name: rows[0].user_name,
-                    photo: rows[0].user_photo
+                    photo: rows[0].user_photo,
+                    sess_token: id
                 }
                 return done(null, account)
             }
@@ -46,7 +48,10 @@ passport.deserializeUser((id, done) => {
 
 // router...
 router.get("/signin", (req, res) => {
-    res.send("THIS IS LOGIN PAGE. /pages/auth/auth.js")
+    auth.redirectIfLogin(req, 
+        function(){ res.redirect("../cloud/") },
+        function(){ res.send("THIS IS LOGIN PAGE. /pages/auth/auth.js") })
+    
 })
 
 router.post("/signin", (req, res) => {
@@ -54,16 +59,14 @@ router.post("/signin", (req, res) => {
 })
 
 router.get("/signup", (req, res) => {
-    res.send("THIS IS SINGUP PAGE. /pages/auth/auth.js")
+    auth.redirectIfLogin(req, 
+        function(){ res.redirect("../cloud/") },
+        function(){ res.send("THIS IS SIGNUP PAGE. /pages/auth/auth.js") })
 })
 
 router.get("/logout", (req, res) => {
     req.logout()
     res.redirect("../../")
-})
-
-router.get("/sess-test", (req, res) => {
-    res.send(req.user)
 })
 
 router.use("/google", googleLoginRouter)

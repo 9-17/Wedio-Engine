@@ -1,10 +1,12 @@
 const express = require('express')
 const app = express()
 const router = express.Router()
-const path = require("path")
+const auth = require("../../../models/authentication")             // Login Manager
 
 router.get("/", (req, res) => {
-    res.render(path.join(__dirname, "../../../../views/playing"))
+    auth.redirectIfLogin(req, 
+        function(){ res.render(path.join(__dirname, "../../../../views/playing")) },
+        function(){ res.redirect("../../auth/signin") })
 })
 
 module.exports = router

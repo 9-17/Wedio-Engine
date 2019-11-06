@@ -11,6 +11,6 @@ function fileCheck(obj) {
         alert('mp3 또는 wav 확장자 파일만 선택 가능합니다.')
         obj.value = ''
         btn.style.display = "none"
-		return false
+		return true
     }
 }
