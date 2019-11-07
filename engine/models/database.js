@@ -18,7 +18,8 @@ const db = {
         CLOUD_ADD_MUSIC: "INSERT INTO wedio_cloud_link (file_owner, file_origin_name, file_saved_name, file_size) VALUES(?,?,?,?)",
         CLOUD_CHECK_SIZE: "SELECT file_size FROM wedio_cloud_link WHERE file_owner = ?",
         CLOUD_OBTAIN_FILES: "SELECT * FROM wedio_cloud_link WHERE file_owner = ?",
-        CLOUD_REMOVE_FILE: "DELETE FROM wedio_cloud_link WHERE file_owner = ? && file_saved_name = ?"
+        CLOUD_REMOVE_FILE: "DELETE FROM wedio_cloud_link WHERE file_owner = ? && file_saved_name = ?",
+        CLOUD_OBTAIN_ONE_FILE: "SELECT * FROM wedio_cloud_link WHERE file_owner = ? and file_saved_name = ?"
     }
 }
 

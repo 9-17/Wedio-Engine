@@ -65,14 +65,28 @@ html {
 .list {
     width: 80vw;
     height: 60vh;
-    margin: 0 auto;
+    margin: 80px auto;
     overflow: auto;
 }
 
-.list>img {
-    width: 100px;
-    height: 100px;
-    margin: 20px;
+#musicItem{
+    display: inline-block;
+    width: 200px;
+    height: 30px;
+    line-height: 30px;
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid black;
+    border-radius: 10px;
+    box-shadow: 2px 2px 2px black;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+#musicItem a{
+    text-decoration: none;
+    color: black;
 }
 
 footer {

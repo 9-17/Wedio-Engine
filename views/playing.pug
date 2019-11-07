@@ -1,5 +1,5 @@
 doctype html
-html
+html(onload="init()")
     head
         include lib/headSetting.pug
         
@@ -10,6 +10,83 @@ html
         include lib/nav.pug
         
         .container
-            
+            .eq
+                .controls
+                    label Low
+                    input(type="range", value="100", step="1", min="0", max="100", oninput="changeGain(this.value, 'lowGain')")
+                .controls
+                    label Mid
+                    input(type="range", value="100", step="1", min="0", max="100", oninput="changeGain(this.value, 'midGain')")
+                .controls
+                    label High
+                    input(type="range", value="100", step="1", min="0", max="100", oninput="changeGain(this.value, 'highGain')")
+        
+            audio(id="player", autoplay, src=`/music/${file.saved_name}`, controls)
+        
+        script.
+            var context = new AudioContext()
+            var mediaElement = document.querySelector('#player')
+            var sourceNode = context.createMediaElementSource(mediaElement)
+
+
+            var gainDb = -40.0
+            var bandSplit = [360,3600]
+
+            var hBand = context.createBiquadFilter()
+            hBand.type = "lowshelf"
+            hBand.frequency.value = bandSplit[0]
+            hBand.gain.value = gainDb
+
+            var hInvert = context.createGain()
+            hInvert.gain.value = -1.0
+
+            var mBand = context.createGain()
+
+            var lBand = context.createBiquadFilter()
+            lBand.type = "highshelf"
+            lBand.frequency.value = bandSplit[1]
+            lBand.gain.value = gainDb
+
+            var lInvert = context.createGain()
+            lInvert.gain.value = -1.0
+
+            sourceNode.connect(lBand)
+            sourceNode.connect(mBand)
+            sourceNode.connect(hBand)
+
+            hBand.connect(hInvert)
+            lBand.connect(lInvert)
+
+            hInvert.connect(mBand)
+            lInvert.connect(mBand)
+
+            var lGain = context.createGain()
+            var mGain = context.createGain()
+            var hGain = context.createGain()
+
+            lBand.connect(lGain)
+            mBand.connect(mGain)
+            hBand.connect(hGain)
+
+            var sum = context.createGain()
+            lGain.connect(sum)
+            mGain.connect(sum)
+            hGain.connect(sum)
+            sum.connect(context.destination)
+
+
+            function changeGain(val,type){
+                var value = parseFloat(val) / 100.0
+                switch(type){
+                    case 'lowGain': lGain.gain.value = value; break;
+                    case 'midGain': mGain.gain.value = value; break;
+                    case 'highGain': hGain.gain.value = value; break;
+                }
+            }
+
+            function init(){
+                if(context.state == 'suspended')
+                    context.resume()
+            }
         
         include lib/footer.pug

@@ -14,6 +14,7 @@ app.set('views', 'views')
 app.set('view engine', 'pug')
 
 app.use(express.static('public'))
+app.use('/music', express.static('upload'))
 app.use(bodyParser.json())                          // JSON Parseing
 app.use(bodyParser.urlencoded({extended: true}))    // URL Parseing
 

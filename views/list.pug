@@ -12,11 +12,14 @@ html
         button.btn.upload(onclick="location.href='/cloud/media/uploader'") 업로드
 
         .container
-            h1 내 노래
+            h1 내 노래 - #{cloud.size}개
             .list
                 - let i = 0
-                while i < 50
-                    img(src=user.photo, alt="테스트 사진")
+                while i < cloud.size
+                    - let name = cloud.file_origin_names[i].slice(0,-4)
+                    - let fileName = cloud.file_saved_names[i]
+                    #musicItem 
+                        a(href=`/cloud/media/player?file_name=${fileName}`) #{name}
                     - i++
-        
+
         include lib/footer.pug
