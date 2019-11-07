@@ -12,7 +12,7 @@ const cloudController = require("./cdctrl")
 
 router.get("/", (req, res) => {
     auth.redirectIfLogin(req, 
-        function(){ res.render(path.join(__dirname, "../../../views/list")) },
+        function(){ res.render(path.join(__dirname, "../../../views/list"),{"user":req.user}) },
         function(){ res.redirect("../auth/signin") })
 })
 

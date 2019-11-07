@@ -7,13 +7,15 @@ html
             
         title Wedio Engine
     body
-        include lib/nav.pug
+        ul.navUl
+            li.navLi.title
+                a(href="#") WedioLOGO
         
         .box
             .inbox
                 h1 Wedio Engine
-                h4 겁나 쩌는 엔진 입니다;; ㄷㄷ 빨리 쓰셈..
-                -if(!username)
+                h2 겁나 쩌는 엔진 입니다;; ㄷㄷ 빨리 쓰셈..
+                -if(!user)
                     .loginBtn#googleLogin
                         a(href='/auth/google')
                             img.loginLogo#googleLogo(src="/img/g-logo.png", alt="구글 아이콘", align="top")
@@ -24,6 +26,8 @@ html
                             img.loginLogo#naverLogo(src="/img/n-logo.png", alt="네이버 아이콘", align="top")
                             span.loginText#naverText Naver로 로그인
                 - else
+                    h4 환영합니다.
+                    h4 #{user.name}님
                     button.btn.goCloud(onclick="location.href='/cloud'") 시작하기
                     
 

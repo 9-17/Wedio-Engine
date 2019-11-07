@@ -33,8 +33,17 @@ html {
 }
 
 .username,
-.logout {
+.logout,
+.userPhoto {
     float: right;
+}
+
+.userPhoto a{
+    padding: 7px 0;
+}
+
+.userPhoto>a>img{
+    height: 32px;
 }
 
 .upload {
