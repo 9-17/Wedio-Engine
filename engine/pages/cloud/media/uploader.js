@@ -32,7 +32,7 @@ const upload = multer({
 
 router.get("/", (req, res) => {
     auth.redirectIfLogin(req, 
-        function(){ res.render(path.join(__dirname, "../../../../views/upload")) },
+        function(){ res.render(path.join(__dirname, "../../../../views/upload"), { "user": req.user }) },
         function(){ res.redirect("../../auth/signin") })
 })
 
@@ -71,7 +71,7 @@ router.post("/", upload.single("file"), (req, res) => {
                             return res.send("Your cloud is full.")
                         } else {
                             // Regist database.
-                            database.conn.query(database.queries.CLOUD_ADD_MUSIC, [ownerToken.uuid, file.originalname, file.filename, file.size], (err, rows) => {
+                            database.conn.query(database.queries.CLOUD_ADD_MUSIC, [ownerToken.sess_token, file.originalname, file.filename, file.size], (err, rows) => {
                                 if(err) {
                                     res.sendStatus(500)
                                 } else {

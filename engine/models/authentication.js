@@ -3,9 +3,14 @@ const app = express()
 
 var auth = {
     checkLogin: function(req) {
-        return req.user != undefined
+
+        try {
+            return req.user !== undefined
+        } catch(err) {
+            return false
+        }
     },
-    redirectIfLogin(req, logined, notlogin) {
+    redirectIfLogin: function(req, logined, notlogin) {
         if(this.checkLogin(req)) {
             logined()
         } else {

@@ -4,7 +4,13 @@ const router = express.Router()
 const path = require("path")
 
 router.get("/", (req, res) => {
-    res.render(path.join(__dirname, "../../../views/index"))
+    if(req.user == undefined) {
+        console.log("undefine")
+        res.render(path.join(__dirname, "../../../views/index"))
+    } else {
+        console.log("def")
+        res.render(path.join(__dirname, "../../../views/index"), { "user": req.user })
+    }
 })
 
 module.exports = router

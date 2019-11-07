@@ -5,7 +5,7 @@ const auth = require("../../../models/authentication")             // Login Mana
 
 router.get("/", (req, res) => {
     auth.redirectIfLogin(req, 
-        function(){ res.render(path.join(__dirname, "../../../../views/playing")) },
+        function(){ res.render(path.join(__dirname, "../../../../views/playing"), { "user": req.user }) },
         function(){ res.redirect("../../auth/signin") })
 })
 

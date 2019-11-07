@@ -38,6 +38,9 @@ html {
 }
 
 .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 800px;
     height: 450px;
     position: absolute;
@@ -45,14 +48,58 @@ html {
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
     border: 1px solid black;
 }
 
-input[type="submit"] {
+#x{
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    font-size: 30px;
+    font-weight: bold;
+    
+}
+
+#x>a{
+    text-decoration: none;
+    color: black;
+}
+
+#drop-area {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px dashed #ccc;
+    border-radius: 20px;
+    width: 500px;
+    height: 230px;
+    margin: 10px auto;
+    padding: 20px;
+}
+
+#drop-area.highlight {
+    border-color: purple;
+    background-color: #e9d6fc;
+}
+
+#button {
+    display: inline-block;
+    padding: 10px;
+    background: #ccc;
+    cursor: pointer;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+#button:hover {
+    background: #ddd;
+}
+
+#button.highlight {
+    opacity: 0.5;
+}
+
+#fileElem {
     display: none;
 }
 

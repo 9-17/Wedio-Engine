@@ -46,8 +46,8 @@ passport.use(new NaverStrategy({
 router.get("/", passport.authenticate("naver"))
 
 router.get("/redirect", passport.authenticate("naver", { failureRedirect: "../signin" }), (req, res) => {
-    // facebook login successed.
-    res.send("naver LOGIN OK.")
+    // naver login successed.
+    res.redirect("../../cloud")
 })
 
 module.exports = router

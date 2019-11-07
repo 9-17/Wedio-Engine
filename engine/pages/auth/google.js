@@ -44,7 +44,7 @@ router.get("/", passport.authenticate("google", { scope: ['profile'] }))
 
 router.get("/redirect", passport.authenticate("google", {failureRedirect: "../signin"}), (req, res) => {
     // google login successed.
-    res.send("GOOGLE LOGIN OK.")
+    res.redirect("../../cloud")
 })
 
 module.exports = router

@@ -1,8 +1,8 @@
 ul.navUl
     li.navLi.title
         a(href="#") WedioLOGO
-    - if(username) 
+    - if(user.name) 
         li.navLi.logout
             a(href="/auth/logout") 로그아웃
         li.navLi.username
-            a(href="#") #{username}
+            a(href="#") #{user.name}
