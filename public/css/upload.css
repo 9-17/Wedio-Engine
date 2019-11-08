@@ -112,6 +112,18 @@ html {
     display: none;
 }
 
+#progress{
+    display: none;
+    margin-top: 30px;
+}
+
+#progress-bar{
+}
+
+.result>#result{
+    margin-top: 30px;
+}
+
 footer {
     position: fixed;
     width: 100%;
