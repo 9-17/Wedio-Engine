@@ -1,0 +1,20 @@
+doctype html
+html
+    head
+        include lib/headSetting.pug
+
+        link(rel="stylesheet", href="/css/error500.css")
+            
+        title Wedio Engine - 500
+    body
+        ul.navUl
+            li.navLi.title
+                a(href="#") WedioLOGO
+        
+        .box
+            .inbox
+                h1 에러!
+                h2 서버에서 문제가 발생했습니다...
+                button.btn.goMain(onclick="location.href='/'") 메인화면으로                
+                    
+        include lib/footer.pug

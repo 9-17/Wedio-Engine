@@ -1,0 +1,28 @@
+doctype html
+html
+    head
+        include lib/headSetting.pug
+
+        link(rel="stylesheet", href="/css/signin.css")
+            
+        title Wedio Engine - 로그인
+    body
+        ul.navUl
+            li.navLi.title
+                a(href="#") WedioLOGO
+        
+        .box
+            .inbox
+                h1 - 로그인 -
+                h2 로그인을 하지 않으면 들어가실 수 없습니다.!
+                .loginBtn#googleLogin
+                    a(href='/auth/google')
+                        img.loginLogo#googleLogo(src="/img/g-logo.png", alt="구글 아이콘", align="top")
+                        span.loginText#googleText Google로 로그인
+                br
+                .loginBtn#naverLogin
+                    a(href='/auth/naver')
+                        img.loginLogo#naverLogo(src="/img/n-logo.png", alt="네이버 아이콘", align="top")
+                        span.loginText#naverText Naver로 로그인
+                    
+        include lib/footer.pug

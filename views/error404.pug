@@ -1,0 +1,20 @@
+doctype html
+html
+    head
+        include lib/headSetting.pug
+
+        link(rel="stylesheet", href="/css/error404.css")
+            
+        title Wedio Engine - 404
+    body
+        ul.navUl
+            li.navLi.title
+                a(href="#") WedioLOGO
+        
+        .box
+            .inbox
+                h1 404!!
+                h2 파일을 찾을 수 없습니다...
+                button.btn.goMain(onclick="location.href='/'") 메인화면으로                
+                    
+        include lib/footer.pug

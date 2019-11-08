@@ -1,6 +1,7 @@
 const express = require('express')
 const app = express()
 const router = express.Router()
+const path = require("path")
 const passport = require("passport")
 const database = require("../../models/database")
 const auth = require("../../models/authentication")             // Login Manager
@@ -50,7 +51,7 @@ passport.deserializeUser((id, done) => {
 router.get("/signin", (req, res) => {
     auth.redirectIfLogin(req, 
         function(){ res.redirect("../cloud/") },
-        function(){ res.send("THIS IS LOGIN PAGE. /pages/auth/auth.js") })
+        function(){ res.render(path.join(__dirname, "../../../views/signin")) })
     
 })
 
