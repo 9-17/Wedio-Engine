@@ -15,7 +15,7 @@ router.get("/delete", (req, res) => {
         
         database.conn.query(database.queries.CLOUD_REMOVE_FILE, [session_token, fileName], (err, rows) => {
             if(err) {
-                res.sendStatus(500)
+                res.redirect("../../error/404")
             } else {
                 try {
                     // Remove file.
@@ -26,7 +26,7 @@ router.get("/delete", (req, res) => {
             }
         })
     } else {
-        res.sendStatus(403)
+        res.redirect("../../error/403")
     }
 })
 

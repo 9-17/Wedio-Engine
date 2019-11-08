@@ -8,6 +8,8 @@ body,
 html {
     margin: 0;
     padding: 0;
+    background-color: #121212;
+    color: white;
 }
 
 .navUl {
@@ -16,7 +18,7 @@ html {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #121212;
+    background-color: #333333;
 }
 
 .navLi a {
@@ -24,12 +26,21 @@ html {
     color: white;
     text-align: center;
     font-size: 20px;
-    padding: 14px 20px;
+    padding: 9.5px 20px;
     text-decoration: none;
+}
+
+.username a {
+    font-weight: bold;
 }
 
 .title {
     float: left;
+}
+
+.username>a,
+.logout>a {
+    padding: 25.5px 20px;
 }
 
 .username,
@@ -38,16 +49,55 @@ html {
     float: right;
 }
 
-.userPhoto a{
-    padding: 7px 0;
+.userPhoto a {
+    padding: 18.5px 0;
 }
 
-.userPhoto>a>img{
+.userPhoto>a>img {
     height: 32px;
 }
 
 .container {
+    position: absolute;
     top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 800px;
+    height: 450px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+h3, h4{
+    margin: 5px;
+}
+
+#player {
+    margin: 20px;
+}
+
+.eqr{
+    display: inline-block;
+    width: 35px;
+    margin: 10px;
+}
+
+input[type=range] {
+    -webkit-appearance: none;
+    background: white;
+    margin: 10px;
+    width: 230px;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    background: #ce64ff;
+    cursor: pointer;
 }
 
 footer {
@@ -55,7 +105,7 @@ footer {
     width: 100%;
     bottom: 0;
     height: 50px;
-    background-color: #333333;
+    background-color: #555555;
     color: white;
     line-height: 50px;
     text-align: center;

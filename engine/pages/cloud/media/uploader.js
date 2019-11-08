@@ -42,7 +42,7 @@ router.post("/", upload.single("file"), (req, res) => {
     let file = req.file
 
     if(ownerToken == undefined) {
-        res.sendStatus(403)
+        res.redirect("../../../error/403")
         return
     } else {
         // Check cloud is valid
@@ -73,7 +73,7 @@ router.post("/", upload.single("file"), (req, res) => {
                             // Regist database.
                             database.conn.query(database.queries.CLOUD_ADD_MUSIC, [ownerToken.sess_token, file.originalname, file.filename, file.size], (err, rows) => {
                                 if(err) {
-                                    res.sendStatus(500)
+                                    res.redirect("../../../error/500")
                                 } else {
                                     res.redirect("../")
                                 }

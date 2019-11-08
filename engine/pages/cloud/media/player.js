@@ -9,7 +9,7 @@ router.get("/", (req, res) => {
     let fileName = req.param("file_name", null)
 
     if(fileName == null) {
-        res.redirect("../")
+        res.redirect("../../../error/404")
     } else {
         if(auth.checkLogin(req)) {
             database.conn.query(database.queries.CLOUD_OBTAIN_ONE_FILE, [req.user.sess_token, fileName], (err, rows) => {

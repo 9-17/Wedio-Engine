@@ -1,5 +1,21 @@
 @import url('https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap&subset=korean');
 
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
 * {
     font-family: 'Nanum Gothic', sans-serif;
 }
@@ -8,6 +24,8 @@ body,
 html {
     margin: 0;
     padding: 0;
+    background-color: #121212;
+    color: white;
 }
 
 .navUl {
@@ -16,7 +34,7 @@ html {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #121212;
+    background-color: #333333;
 }
 
 .navLi a {
@@ -24,13 +42,23 @@ html {
     color: white;
     text-align: center;
     font-size: 20px;
-    padding: 14px 20px;
+    padding: 9.5px 20px;
     text-decoration: none;
+}
+
+.username a {
+    font-weight: bold;
 }
 
 .title {
     float: left;
 }
+
+.username>a,
+.logout>a {
+    padding: 25.5px 20px;
+}
+
 
 .username,
 .logout,
@@ -38,24 +66,30 @@ html {
     float: right;
 }
 
-.userPhoto a{
-    padding: 7px 0;
+.userPhoto a {
+    padding: 18.5px 0;
 }
 
-.userPhoto>a>img{
+.userPhoto>a>img {
     height: 32px;
 }
 
 .upload {
     position: absolute;
-    top: 60px;
+    top: 92px;
     right: 5vw;
     width: 100px;
     height: 40px;
     border: 1px solid black;
+    font-weight: bold;
     border-radius: 10px;
     background-color: white;
     cursor: pointer;
+}
+
+.upload:hover {
+    background-color: #f1f1f1;
+    box-shadow: 0 0 10px white;
 }
 
 .container>h1 {
@@ -69,24 +103,28 @@ html {
     overflow: auto;
 }
 
-#musicItem{
+#musicItem {
     display: inline-block;
     width: 200px;
     height: 30px;
     line-height: 30px;
     padding: 10px;
     margin: 10px;
-    border: 1px solid black;
+    border: 1px solid white;
     border-radius: 10px;
-    box-shadow: 2px 2px 2px black;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    cursor: pointer;
 }
 
-#musicItem a{
+#musicItem a {
     text-decoration: none;
-    color: black;
+    color: white;
+}
+
+#musicItem:hover {
+    box-shadow: 0 0 10px white;
 }
 
 footer {
@@ -94,7 +132,7 @@ footer {
     width: 100%;
     bottom: 0;
     height: 50px;
-    background-color: #333333;
+    background-color: #555555;
     color: white;
     line-height: 50px;
     text-align: center;
